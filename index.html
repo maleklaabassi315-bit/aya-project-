@@ -3,191 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Aya 🎉</title>
+    <title>Happy Birthday Aya ✨</title>
+    <!-- استدعاء خط Cairo العصري من جوجل -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            background: #ffb3c6; /* لون وردي مبهج للخلفية بالكامل كالفيديو */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            /* خلفية وردية متدرجة ناعمة ومريحة للعين */
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
             overflow-x: hidden;
+            padding: 20px;
         }
 
-        /* أنيميشن تناثر قلوب وقصاصات ملونة */
-        .confetti {
+        /* تأثير تناثر قلوب ناعمة متحركة */
+        .heart-particle {
             position: fixed;
-            width: 12px;
-            height: 12px;
+            font-size: 20px;
             top: -20px;
             z-index: 999;
-            animation: fall linear forwards;
+            user-select: none;
+            pointer-events: none;
+            animation: floatDown linear forwards;
         }
-        @keyframes fall {
-            to { transform: translateY(105vh) rotate(360deg); }
+        @keyframes floatDown {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
+        /* العنوان الرئيسي بتأثير نيون ناعم */
         h1 {
-            font-size: 2.5rem;
-            color: #fff;
+            font-weight: 900;
+            font-size: 2.3rem;
+            color: #ffffff;
             text-align: center;
-            text-shadow: 2px 4px 10px rgba(255, 74, 117, 0.3);
-            margin-bottom: 30px;
-            animation: bounce 2s infinite;
+            text-shadow: 0 4px 15px rgba(255, 74, 117, 0.4);
+            margin-bottom: 10px;
+            animation: pulse 2s infinite ease-in-out;
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .subtitle {
+            color: #fff;
+            opacity: 0.9;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         .container {
+            width: 100%;
+            max-width: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
+            gap: 35px;
         }
 
-        /* بطاقة الصورة التفاعلية الدائرية العصريّة */
-        .profile-card {
-            background: white;
-            padding: 20px;
+        /* بطاقة العرض بأسلوب Glassmorphism (تأثير الزجاج الشفاف) */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 30px 20px;
             text-align: center;
-            width: 85%;
-            transition: transform 0.3s;
+            width: 100%;
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .profile-card:hover {
-            transform: scale(1.03);
+        .glass-card:hover {
+            transform: translateY(-5px);
         }
-        .profile-card img {
-            width: 160px;
-            height: 160px;
+
+        /* ضبط الصورة الشخصية الدائرية بشكل فخم */
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .profile-wrapper img {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 6px solid #ff4a75;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        .profile-card h2 {
-            color: #ff4a75;
-            margin: 15px 0 5px 0;
-            font-size: 1.6rem;
-        }
-        .profile-card p {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 0;
+            border: 4px solid #ffffff;
+            box-shadow: 0 8px 24px rgba(255, 74, 117, 0.2);
         }
 
-        /* تأثير فتح مغلف الرسالة السريّة كالفيديو تمااااماً */
-        .envelope-wrapper {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            background-color: #ff4a75;
-            border-radius: 0 0 15px 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            cursor: pointer;
-            margin-top: 50px;
+        .glass-card h2 {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 10px 0 5px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .envelope-wrapper::before {
+        .glass-card p {
+            color: #ffffff;
+            opacity: 0.9;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* مغلف الرسالة التفاعلي المتطور كالفيديو تمااااماً */
+        .envelope-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .envelope {
+            position: relative;
+            width: 290px;
+            height: 160px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            cursor: pointer;
+        }
+        /* غطاء المغلف العلوي المثلثي */
+        .envelope::before {
             content: "";
             position: absolute;
             top: 0;
+            left: 0;
             width: 0;
             height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 110px solid #ff758f;
+            border-left: 145px solid transparent;
+            border-right: 145px solid transparent;
+            border-top: 95px solid rgba(255, 255, 255, 0.5);
             transform-origin: top;
-            transition: transform 0.5s cubic-bezier(0.12, 1, 0.5, 1);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 3;
         }
-        .envelope-wrapper.open::before {
+        .envelope.open::before {
             transform: rotateX(180deg);
             z-index: 1;
         }
+
+        /* الرسالة السرية التي تخرج بسلاسة من الداخل */
         .letter {
             position: absolute;
-            bottom: 10px;
-            left: 15px;
+            bottom: 5px;
+            left: 10px;
             width: 270px;
-            height: 160px;
-            background-color: white;
-            border-radius: 15px;
+            height: 140px;
+            background: #ffffff;
+            border-radius: 16px;
             padding: 20px;
             box-sizing: border-box;
-            transition: transform 0.5s ease-in-out, height 0.5s ease-in-out;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), height 0.6s ease;
             z-index: 2;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .envelope-wrapper.open .letter {
-            transform: translateY(-130px);
+        .envelope.open .letter {
+            transform: translateY(-120px);
             height: auto;
+            min-height: 200px;
             z-index: 4;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         .letter h3 {
             margin: 0 0 10px 0;
             color: #ff4a75;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
+            font-weight: 700;
         }
         .letter p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
-            color: #4a1521;
+            color: #555555;
             margin: 0;
         }
 
-        /* زر الموسيقى العائم */
+        /* زر تشغيل الموسيقى العائم والزجاجي الفخم */
         .music-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background-color: #ff4a75;
+            bottom: 25px;
+            left: 25px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             font-size: 1.3rem;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.2s, background 0.3s;
+        }
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
         }
     </style>
 </head>
 <body>
 
+    <!-- زر الموسيقى -->
     <button class="music-btn" onclick="toggleMusic()">🎵</button>
     <audio id="bg-music" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
     <h1>كل عام وأنتِ بخير يا آية! 🎉</h1>
+    <p class="subtitle">اضغطي على المغلف بالأسفل لاكتشاف المفاجأة ✨</p>
 
     <div class="container">
         
-        <div class="profile-card">
-            <img src="aya1.jpg" alt="Aya">
+        <!-- بطاقة العرض الزجاجية الفخمة -->
+        <div class="glass-card">
+            <div class="profile-wrapper">
+                <img src="aya1.jpg" alt="Aya">
+            </div>
             <h2>آية الجميلة ❤️</h2>
-            <p>اضغطي على المغلف بالأسفل لقراءة رسالتكِ ✉️</p>
+            <p>رسالة خاصة مجهزة خصيصاً لكِ</p>
         </div>
 
-        <div class="envelope-wrapper" onclick="toggleEnvelope(this)">
-            <div class="letter">
-                <h3>رسالة عيد ميلادكِ السحرية ✨</h3>
-                <p>إلى آية الرائعة.. كل عام وأنتِ مصدر فرح وسلام لمن حولك. أتمنى لكِ سنة جديدة مليئة بالنجاح، السعادة وتحقيق كل الأمنيات التي يتمناها قلبكِ الطيب! 🎀</p>
+        <!-- المغلف والرسالة المنبثقة الانسيابية -->
+        <div class="envelope-container">
+            <div class="envelope" onclick="toggleEnvelope(this)">
+                <div class="letter">
+                    <h3>رسالة ميلادكِ السحرية ✨</h3>
+                    <p>إلى آية الرائعة.. كل عام وأنتِ مصدر فرح وسلام لمن حولك. أتمنى لكِ سنة جديدة مليئة بالنجاح، السعادة وتحقيق كل الأمنيات التي يتمناها قلبكِ الطيب! دمتِ بخير دائماً 🎀</p>
+                </div>
             </div>
         </div>
 
@@ -197,7 +267,7 @@
         function toggleEnvelope(envelope) {
             envelope.classList.toggle('open');
             if(envelope.classList.contains('open')) {
-                createConfetti();
+                spawnHearts();
             }
         }
 
@@ -213,21 +283,22 @@
             }
         }
 
-        function createConfetti() {
-            const colors = ['#ff4a75', '#ff8da1', '#ffffff', '#ffbe0b', '#ff006e', '#8338ec'];
-            for (let i = 0; i < 40; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.animationDelay = Math.random() * 0.4 + 's';
-                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.borderRadius = Math.random() > 0.4 ? '50%' : '2px';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 4000);
+        function spawnHearts() {
+            const hearts = ['❤️', '💖', '✨', '🌸', '🎈'];
+            for (let i = 0; i < 35; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-particle');
+                heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 0.5 + 's';
+                heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
             }
         }
-        window.onload = createConfetti;
+        // إطلاق قلوب ترحيبية عند فتح الموقع لأول مرة
+        window.onload = spawnHearts;
     </script>
 </body>
 </html>
