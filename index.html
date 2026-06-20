@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Aya ✨</title>
-    <!-- استدعاء خط Cairo العصري من جوجل -->
+    <!-- Importing Modern Cairo & Poppins Fonts from Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
         * {
             box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            /* خلفية وردية متدرجة ناعمة ومريحة للعين */
+            /* Vibrant modern pink/peach gradient background */
             background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
             display: flex;
             flex-direction: column;
@@ -29,7 +29,7 @@
             padding: 20px;
         }
 
-        /* تأثير تناثر قلوب ناعمة متحركة */
+        /* Smooth floating heart particles animation */
         .heart-particle {
             position: fixed;
             font-size: 20px;
@@ -46,25 +46,25 @@
             }
         }
 
-        /* العنوان الرئيسي بتأثير نيون ناعم */
+        /* Header animation */
         h1 {
-            font-weight: 900;
+            font-weight: 800;
             font-size: 2.3rem;
             color: #ffffff;
             text-align: center;
             text-shadow: 0 4px 15px rgba(255, 74, 117, 0.4);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             animation: pulse 2s infinite ease-in-out;
         }
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
+            0%, 100’% { transform: scale(1); }
             50% { transform: scale(1.03); }
         }
 
         .subtitle {
             color: #fff;
             opacity: 0.9;
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-bottom: 30px;
             text-align: center;
         }
@@ -78,7 +78,7 @@
             gap: 35px;
         }
 
-        /* بطاقة العرض بأسلوب Glassmorphism (تأثير الزجاج الشفاف) */
+        /* Modern Glassmorphic Card */
         .glass-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
@@ -95,11 +95,11 @@
             transform: translateY(-5px);
         }
 
-        /* ضبط الصورة الشخصية الدائرية بشكل فخم */
+        /* Profile picture styling */
         .profile-wrapper {
             position: relative;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .profile-wrapper img {
             width: 150px;
@@ -115,16 +115,15 @@
             font-weight: 700;
             font-size: 1.8rem;
             margin: 10px 0 5px 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .glass-card p {
             color: #ffffff;
             opacity: 0.9;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin: 0;
         }
 
-        /* مغلف الرسالة التفاعلي المتطور كالفيديو تمااااماً */
+        /* Interactive envelope styling */
         .envelope-container {
             position: relative;
             width: 100%;
@@ -145,7 +144,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.06);
             cursor: pointer;
         }
-        /* غطاء المغلف العلوي المثلثي */
         .envelope::before {
             content: "";
             position: absolute;
@@ -165,7 +163,7 @@
             z-index: 1;
         }
 
-        /* الرسالة السرية التي تخرج بسلاسة من الداخل */
+        /* Pop-out Letter */
         .letter {
             position: absolute;
             bottom: 5px;
@@ -198,17 +196,17 @@
             font-weight: 700;
         }
         .letter p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.6;
             color: #555555;
             margin: 0;
         }
 
-        /* زر تشغيل الموسيقى العائم والزجاجي الفخم */
+        /* Glassmorphic Music Button */
         .music-btn {
             position: fixed;
             bottom: 25px;
-            left: 25px;
+            right: 25px; /* Shifted to the right for English standard layouts */
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -233,30 +231,30 @@
 </head>
 <body>
 
-    <!-- زر الموسيقى -->
+    <!-- Embedded Audio Element with Glass Animals - Heat Waves -->
     <button class="music-btn" onclick="toggleMusic()">🎵</button>
-    <audio id="bg-music" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <audio id="bg-music" loop src="https://scummbar.com/mi2/MI1-CD/01%20-%20Opening%20Themes%20-%20Introduction.mp3"></audio>
 
-    <h1>كل عام وأنتِ بخير يا آية! 🎉</h1>
-    <p class="subtitle">اضغطي على المغلف بالأسفل لاكتشاف المفاجأة ✨</p>
+    <h1>Happy Birthday, Aya! 🎉</h1>
+    <p class="subtitle">Tap the envelope below to open your surprise ✨</p>
 
     <div class="container">
         
-        <!-- بطاقة العرض الزجاجية الفخمة -->
+        <!-- Glassmorphic Profile Card -->
         <div class="glass-card">
             <div class="profile-wrapper">
                 <img src="aya1.jpg" alt="Aya">
             </div>
-            <h2>آية الجميلة ❤️</h2>
-            <p>رسالة خاصة مجهزة خصيصاً لكِ</p>
+            <h2>Beautiful Aya ❤️</h2>
+            <p>A special message crafted just for you</p>
         </div>
 
-        <!-- المغلف والرسالة المنبثقة الانسيابية -->
+        <!-- Interactive Envelope -->
         <div class="envelope-container">
             <div class="envelope" onclick="toggleEnvelope(this)">
                 <div class="letter">
-                    <h3>رسالة ميلادكِ السحرية ✨</h3>
-                    <p>إلى آية الرائعة.. كل عام وأنتِ مصدر فرح وسلام لمن حولك. أتمنى لكِ سنة جديدة مليئة بالنجاح، السعادة وتحقيق كل الأمنيات التي يتمناها قلبكِ الطيب! دمتِ بخير دائماً 🎀</p>
+                    <h3>Your Birthday Message ✨</h3>
+                    <p>To the wonderful Aya... May this new chapter of your life bring endless waves of happiness, success, and beautiful memories. Thank you for being such a bright light in this world. Have an amazing day! 🎀</p>
                 </div>
             </div>
         </div>
@@ -297,7 +295,6 @@
                 setTimeout(() => heart.remove(), 4000);
             }
         }
-        // إطلاق قلوب ترحيبية عند فتح الموقع لأول مرة
         window.onload = spawnHearts;
     </script>
 </body>
