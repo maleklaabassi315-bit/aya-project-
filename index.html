@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Aya ✨</title>
-    <!-- Importing Modern Cairo & Poppins Fonts from Google -->
+    <!-- Importing Modern Poppins Font from Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
@@ -19,7 +19,6 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            /* Vibrant modern pink/peach gradient background */
             background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
             display: flex;
             flex-direction: column;
@@ -29,7 +28,6 @@
             padding: 20px;
         }
 
-        /* Smooth floating heart particles animation */
         .heart-particle {
             position: fixed;
             font-size: 20px;
@@ -46,7 +44,6 @@
             }
         }
 
-        /* Header animation */
         h1 {
             font-weight: 800;
             font-size: 2.3rem;
@@ -57,7 +54,7 @@
             animation: pulse 2s infinite ease-in-out;
         }
         @keyframes pulse {
-            0%, 100’% { transform: scale(1); }
+            0%, 100% { transform: scale(1); }
             50% { transform: scale(1.03); }
         }
 
@@ -78,7 +75,6 @@
             gap: 35px;
         }
 
-        /* Modern Glassmorphic Card */
         .glass-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
@@ -95,7 +91,6 @@
             transform: translateY(-5px);
         }
 
-        /* Profile picture styling */
         .profile-wrapper {
             position: relative;
             display: inline-block;
@@ -123,7 +118,6 @@
             margin: 0;
         }
 
-        /* Interactive envelope styling */
         .envelope-container {
             position: relative;
             width: 100%;
@@ -163,7 +157,6 @@
             z-index: 1;
         }
 
-        /* Pop-out Letter */
         .letter {
             position: absolute;
             bottom: 5px;
@@ -202,11 +195,10 @@
             margin: 0;
         }
 
-        /* Glassmorphic Music Button */
         .music-btn {
             position: fixed;
             bottom: 25px;
-            right: 25px; /* Shifted to the right for English standard layouts */
+            right: 25px;
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -231,16 +223,14 @@
 </head>
 <body>
 
-    <!-- Embedded Audio Element with Glass Animals - Heat Waves -->
     <button class="music-btn" onclick="toggleMusic()">🎵</button>
-    <audio id="bg-music" loop src="https://scummbar.com/mi2/MI1-CD/01%20-%20Opening%20Themes%20-%20Introduction.mp3"></audio>
+    <audio id="bg-music" loop src="https://pub-c5e31b5cdafb419a864561ec24f28ae5.r2.dev/Glass%20Animals%20-%20Heat%20Waves%20(Official%20Video).mp3"></audio>
 
     <h1>Happy Birthday, Aya! 🎉</h1>
     <p class="subtitle">Tap the envelope below to open your surprise ✨</p>
 
     <div class="container">
         
-        <!-- Glassmorphic Profile Card -->
         <div class="glass-card">
             <div class="profile-wrapper">
                 <img src="aya1.jpg" alt="Aya">
@@ -249,7 +239,6 @@
             <p>A special message crafted just for you</p>
         </div>
 
-        <!-- Interactive Envelope -->
         <div class="envelope-container">
             <div class="envelope" onclick="toggleEnvelope(this)">
                 <div class="letter">
@@ -262,6 +251,9 @@
     </div>
 
     <script>
+        const music = document.getElementById('bg-music');
+        let isFirstPlay = true;
+
         function toggleEnvelope(envelope) {
             envelope.classList.toggle('open');
             if(envelope.classList.contains('open')) {
@@ -270,9 +262,13 @@
         }
 
         function toggleMusic() {
-            const music = document.getElementById('bg-music');
             const btn = document.querySelector('.music-btn');
             if (music.paused) {
+                // تفعيل التخطي التلقائي للثانية 36 عند أول تشغيل فقط
+                if (isFirstPlay) {
+                    music.currentTime = 36; 
+                    isFirstPlay = false;
+                }
                 music.play();
                 btn.innerText = "⏸️";
             } else {
