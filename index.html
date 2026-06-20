@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aya 🎉</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #ffb3c6; /* لون وردي مبهج للخلفية بالكامل كالفيديو */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* أنيميشن تناثر قلوب وقصاصات ملونة */
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            top: -20px;
+            z-index: 999;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(105vh) rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            text-align: center;
+            text-shadow: 2px 4px 10px rgba(255, 74, 117, 0.3);
+            margin-bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        /* بطاقة الصورة التفاعلية الدائرية العصريّة */
+        .profile-card {
+            background: white;
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 85%;
+            transition: transform 0.3s;
+        }
+        .profile-card:hover {
+            transform: scale(1.03);
+        }
+        .profile-card img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #ff4a75;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .profile-card h2 {
+            color: #ff4a75;
+            margin: 15px 0 5px 0;
+            font-size: 1.6rem;
+        }
+        .profile-card p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* تأثير فتح مغلف الرسالة السريّة كالفيديو تمااااماً */
+        .envelope-wrapper {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: #ff4a75;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            cursor: pointer;
+            margin-top: 50px;
+        }
+        .envelope-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 110px solid #ff758f;
+            transform-origin: top;
+            transition: transform 0.5s cubic-bezier(0.12, 1, 0.5, 1);
+            z-index: 3;
+        }
+        .envelope-wrapper.open::before {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+        .letter {
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            width: 270px;
+            height: 160px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.5s ease-in-out, height 0.5s ease-in-out;
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .envelope-wrapper.open .letter {
+            transform: translateY(-130px);
+            height: auto;
+            z-index: 4;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .letter h3 {
+            margin: 0 0 10px 0;
+            color: #ff4a75;
+            font-size: 1.2rem;
+        }
+        .letter p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4a1521;
+            margin: 0;
+        }
+
+        /* زر الموسيقى العائم */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #ff4a75;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="music-btn" onclick="toggleMusic()">🎵</button>
+    <audio id="bg-music" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <h1>كل عام وأنتِ بخير يا آية! 🎉</h1>
+
+    <div class="container">
+        
+        <div class="profile-card">
+            <img src="aya1.jpg" alt="Aya">
+            <h2>آية الجميلة ❤️</h2>
+            <p>اضغطي على المغلف بالأسفل لقراءة رسالتكِ ✉️</p>
+        </div>
+
+        <div class="envelope-wrapper" onclick="toggleEnvelope(this)">
+            <div class="letter">
+                <h3>رسالة عيد ميلادكِ السحرية ✨</h3>
+                <p>إلى آية الرائعة.. كل عام وأنتِ مصدر فرح وسلام لمن حولك. أتمنى لكِ سنة جديدة مليئة بالنجاح، السعادة وتحقيق كل الأمنيات التي يتمناها قلبكِ الطيب! 🎀</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleEnvelope(envelope) {
+            envelope.classList.toggle('open');
+            if(envelope.classList.contains('open')) {
+                createConfetti();
+            }
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById('bg-music');
+            const btn = document.querySelector('.music-btn');
+            if (music.paused) {
+                music.play();
+                btn.innerText = "⏸️";
+            } else {
+                music.pause();
+                btn.innerText = "🎵";
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#ff4a75', '#ff8da1', '#ffffff', '#ffbe0b', '#ff006e', '#8338ec'];
+            for (let i = 0; i < 40; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 0.4 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.4 ? '50%' : '2px';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 4000);
+            }
+        }
+        window.onload = createConfetti;
+    </script>
+</body>
+</html>
