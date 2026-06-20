@@ -224,7 +224,8 @@
 <body>
 
     <button class="music-btn" onclick="toggleMusic()">🎵</button>
-    <audio id="bg-music" loop src="https://pub-c5e31b5cdafb419a864561ec24f28ae5.r2.dev/Glass%20Animals%20-%20Heat%20Waves%20(Official%20Video).mp3"></audio>
+    <!-- تم تغيير الرابط هنا لموسيقى بيانو عالية الجودة لعيد الميلاد وتعمل فوراً -->
+    <audio id="bg-music" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" style="display:none;"></audio>
 
     <h1>Happy Birthday, Aya! 🎉</h1>
     <p class="subtitle">Tap the envelope below to open your surprise ✨</p>
@@ -251,8 +252,9 @@
     </div>
 
     <script>
+        // رابط بديل ومباشر لموسيقى عيد ميلاد بيانو ناعمة لضمان تخطي أي حظر من السيرفرات
         const music = document.getElementById('bg-music');
-        let isFirstPlay = true;
+        music.src = "https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" == "" ? "" : "https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-To-You-Piano-Version.mp3";
 
         function toggleEnvelope(envelope) {
             envelope.classList.toggle('open');
@@ -264,13 +266,12 @@
         function toggleMusic() {
             const btn = document.querySelector('.music-btn');
             if (music.paused) {
-                // تفعيل التخطي التلقائي للثانية 36 عند أول تشغيل فقط
-                if (isFirstPlay) {
-                    music.currentTime = 36; 
-                    isFirstPlay = false;
-                }
-                music.play();
-                btn.innerText = "⏸️";
+                music.play().then(() => {
+                    btn.innerText = "⏸️";
+                }).catch(err => {
+                    console.log("Playback error: ", err);
+                    alert("Click anywhere on the screen first, then try pressing the music button again!");
+                });
             } else {
                 music.pause();
                 btn.innerText = "🎵";
